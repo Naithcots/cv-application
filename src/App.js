@@ -23,6 +23,8 @@ class App extends Component {
     this.addWork = this.addWork.bind(this);
     this.removeEducation = this.removeEducation.bind(this);
     this.removeWork = this.removeWork.bind(this);
+    this.editEducation = this.editEducation.bind(this);
+    this.editWork = this.editWork.bind(this);
   }
 
   setGeneralField(name, value) {
@@ -34,17 +36,17 @@ class App extends Component {
     });
   }
 
-  addEducation(schoolName, level, subject, startDate, endDate) {
+  addEducation(schoolname, level, subject, startdate, enddate) {
     const id = this.state.education.length;
-    const education = { id, schoolName, level, subject, startDate, endDate };
+    const education = { id, schoolname, level, subject, startdate, enddate };
     this.setState({
       education: [...this.state.education, education],
     });
   }
 
-  addWork(companyName, position, description, startDate, endDate) {
+  addWork(companyname, position, description, startdate, enddate) {
     const id = this.state.work.length;
-    const work = { id, companyName, position, description, startDate, endDate };
+    const work = { id, companyname, position, description, startdate, enddate };
     this.setState({
       work: [...this.state.work, work],
     });
@@ -59,6 +61,24 @@ class App extends Component {
   removeWork(id) {
     this.setState({
       work: this.state.work.filter((e) => e.id !== id),
+    });
+  }
+
+  editEducation(id, schoolname, level, subject, startdate, enddate) {
+    this.setState({
+      education: this.state.education.map((e) =>
+        e.id === id ? { schoolname, level, subject, startdate, enddate } : e
+      ),
+    });
+  }
+
+  editWork(id, companyname, position, description, startdate, enddate) {
+    this.setState({
+      work: this.state.work.map((e) =>
+        e.id === id
+          ? { companyname, position, description, startdate, enddate }
+          : e
+      ),
     });
   }
 
@@ -78,6 +98,8 @@ class App extends Component {
             addWork={this.addWork}
             removeEducation={this.removeEducation}
             removeWork={this.removeWork}
+            editEducation={this.editEducation}
+            editWork={this.editWork}
           />
           <Preview />
         </main>

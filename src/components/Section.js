@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styles from "../styles/Section.module.css";
+import Field from "./Field";
 import Input from "./Input";
 
 class Section extends Component {
@@ -10,7 +11,15 @@ class Section extends Component {
       inputOpen: false,
     };
 
+    this.toggleInputOpen = this.toggleInputOpen.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleEdit = this.handleEdit.bind(this);
+  }
+
+  toggleInputOpen() {
+    this.setState({
+      inputOpen: this.state.inputOpen ? false : true,
+    });
   }
 
   handleSubmit(e) {
@@ -43,6 +52,10 @@ class Section extends Component {
     });
   }
 
+  handleEdit(e) {
+    e.preventDefault();
+  }
+
   render() {
     const {
       fields,
@@ -53,6 +66,8 @@ class Section extends Component {
       work,
       removeEducation,
       removeWork,
+      editEducation,
+      editWork,
     } = this.props;
     const { inputOpen } = this.state;
 
@@ -75,25 +90,29 @@ class Section extends Component {
           <>
             {education && (
               <>
-                {education.map((e, idx) => (
-                  <div key={idx}>
-                    {e.schoolName}
-                    <button>Edit</button>
-                    <button onClick={() => removeEducation(e.id)}>
-                      Remove
-                    </button>
-                  </div>
+                {education.map((e) => (
+                  <Field
+                    name={e.schoolname}
+                    fields={fields}
+                    education={e}
+                    remove={removeEducation}
+                    edit={editEducation}
+                    key={"e" + e.id}
+                  />
                 ))}
               </>
             )}
             {work && (
               <>
-                {work.map((e, idx) => (
-                  <div key={idx}>
-                    {e.companyName}
-                    <button>Edit</button>
-                    <button onClick={() => removeWork(e.id)}>Remove</button>
-                  </div>
+                {work.map((e) => (
+                  <Field
+                    name={e.companyname}
+                    fields={fields}
+                    work={e}
+                    remove={removeWork}
+                    edit={editWork}
+                    key={"w" + e.id}
+                  />
                 ))}
               </>
             )}
@@ -101,7 +120,7 @@ class Section extends Component {
             <div className={styles.buttons}>
               <button
                 className={styles["button-add"]}
-                onClick={() => this.setState({ inputOpen: true })}
+                onClick={this.toggleInputOpen}
               >
                 New
               </button>

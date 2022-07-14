@@ -7,7 +7,7 @@ class Input extends Component {
   }
 
   render() {
-    const { label, type, setGeneralField } = this.props;
+    const { label, type, setGeneralField, education, work } = this.props;
     const forStr = label.replace(" ", "").toLowerCase();
 
     if (setGeneralField)
@@ -20,6 +20,7 @@ class Input extends Component {
             type={type}
             id={forStr}
             onChange={(e) => setGeneralField(forStr, e.target.value)}
+            required
           />
         </div>
       );
@@ -29,7 +30,18 @@ class Input extends Component {
         <label htmlFor={forStr} className={styles.label}>
           {label}
         </label>
-        <input type={type} id={forStr} />
+        {!education && !work && <input type={type} id={forStr} required />}
+        {education && (
+          <input
+            type={type}
+            id={forStr}
+            defaultValue={education[forStr]}
+            required
+          />
+        )}
+        {work && (
+          <input type={type} id={forStr} defaultValue={work[forStr]} required />
+        )}
       </div>
     );
   }

@@ -39,6 +39,8 @@ class Forms extends Component {
       addWork,
       removeEducation,
       removeWork,
+      editEducation,
+      editWork,
     } = this.props;
 
     return (
@@ -52,6 +54,7 @@ class Forms extends Component {
           fields={educationFields}
           addEducation={addEducation}
           removeEducation={removeEducation}
+          editEducation={editEducation}
           name="Education"
           expandable={true}
           education={education}
@@ -60,6 +63,7 @@ class Forms extends Component {
           fields={workFields}
           addWork={addWork}
           removeWork={removeWork}
+          editWork={editWork}
           name="Work Experience"
           expandable={true}
           work={work}
