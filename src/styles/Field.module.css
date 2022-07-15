@@ -24,3 +24,12 @@
   composes: button;
   background-color: #60a5fa;
 }
+
+.button-save {
+  composes: button;
+  margin: 0;
+  margin-top: 0.5em;
+  background-color: aquamarine;
+
+  border-bottom: 2px solid #999;
+}

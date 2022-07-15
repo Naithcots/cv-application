@@ -93,7 +93,7 @@ class Field extends Component {
                 key={idx}
               />
             ))}
-            <button>Confirm</button>
+            <button className={styles["button-save"]}>Confirm</button>
           </form>
         )}
       </>
