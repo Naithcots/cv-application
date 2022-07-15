@@ -90,18 +90,17 @@ class App extends Component {
         <Header />
         <main>
           <Forms
-            general={general}
             education={education}
             work={work}
             setGeneralField={this.setGeneralField}
             addEducation={this.addEducation}
-            addWork={this.addWork}
             removeEducation={this.removeEducation}
-            removeWork={this.removeWork}
             editEducation={this.editEducation}
+            addWork={this.addWork}
+            removeWork={this.removeWork}
             editWork={this.editWork}
           />
-          <Preview />
+          <Preview general={general} education={education} work={work} />
         </main>
       </>
     );

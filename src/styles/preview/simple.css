@@ -1,0 +1,74 @@
+.simple {
+  --padding-hor: 2em;
+}
+
+.simple .general {
+  padding: 1em var(--padding-hor);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  color: #fff;
+  background-color: #0284c7;
+}
+
+.simple .firstname,
+.simple .lastname {
+  margin: 0;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+}
+
+.simple .email-label,
+.simple .phone-label {
+  margin: 0;
+  margin-bottom: 0.5em;
+
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.simple .email-label {
+  margin-top: 0.75em;
+}
+
+.simple .phone,
+.simple .email {
+  margin: 0;
+}
+
+.simple .work {
+  padding: 0 var(--padding-hor);
+}
+
+.simple .education {
+  padding: 0 var(--padding-hor);
+}
+
+.simple .title {
+  border-bottom: 1px solid #999;
+}
+
+.simple .school {
+  display: flex;
+  align-items: flex-start;
+  gap: 3em;
+}
+
+.simple .school p {
+  margin: 0;
+  margin-bottom: 0.5em;
+}
+
+.simple .school .date {
+}
+
+.simple .school .details .name {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.simple .school .details .level {
+  font-style: italic;
+}

@@ -24,7 +24,6 @@ class Section extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
     if (this.props.addEducation !== undefined) {
       const fields = e.target;
       this.props.addEducation(
@@ -35,7 +34,6 @@ class Section extends Component {
         fields.enddate.value
       );
     }
-
     if (this.props.addWork !== undefined) {
       const fields = e.target;
       this.props.addWork(
@@ -46,7 +44,6 @@ class Section extends Component {
         fields.enddate.value
       );
     }
-
     this.setState({
       inputOpen: false,
     });
@@ -69,6 +66,7 @@ class Section extends Component {
       editEducation,
       editWork,
     } = this.props;
+
     const { inputOpen } = this.state;
 
     return (
@@ -88,34 +86,29 @@ class Section extends Component {
 
         {expandable && (
           <>
-            {education && (
-              <>
-                {education.map((e) => (
-                  <Field
-                    name={e.schoolname}
-                    fields={fields}
-                    education={e}
-                    remove={removeEducation}
-                    edit={editEducation}
-                    key={"e" + e.id}
-                  />
-                ))}
-              </>
-            )}
-            {work && (
-              <>
-                {work.map((e) => (
-                  <Field
-                    name={e.companyname}
-                    fields={fields}
-                    work={e}
-                    remove={removeWork}
-                    edit={editWork}
-                    key={"w" + e.id}
-                  />
-                ))}
-              </>
-            )}
+            {education &&
+              education.map((e) => (
+                <Field
+                  name={e.schoolname}
+                  fields={fields}
+                  education={e}
+                  remove={removeEducation}
+                  edit={editEducation}
+                  key={"e" + e.id}
+                />
+              ))}
+
+            {work &&
+              work.map((e) => (
+                <Field
+                  name={e.companyname}
+                  fields={fields}
+                  work={e}
+                  remove={removeWork}
+                  edit={editWork}
+                  key={"w" + e.id}
+                />
+              ))}
 
             <div className={styles.buttons}>
               <button

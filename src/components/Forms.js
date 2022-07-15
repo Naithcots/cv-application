@@ -31,7 +31,6 @@ class Forms extends Component {
 
   render() {
     const {
-      general,
       education,
       work,
       setGeneralField,
@@ -52,21 +51,21 @@ class Forms extends Component {
         />
         <Section
           fields={educationFields}
+          education={education}
           addEducation={addEducation}
           removeEducation={removeEducation}
           editEducation={editEducation}
           name="Education"
           expandable={true}
-          education={education}
         />
         <Section
           fields={workFields}
+          work={work}
           addWork={addWork}
           removeWork={removeWork}
           editWork={editWork}
           name="Work Experience"
           expandable={true}
-          work={work}
         />
       </div>
     );

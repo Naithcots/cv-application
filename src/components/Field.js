@@ -71,7 +71,14 @@ class Field extends Component {
                 Remove
               </button>
             )}
-            {work && <button onClick={() => remove(work.id)}>Remove</button>}
+            {work && (
+              <button
+                className={styles["button-remove"]}
+                onClick={() => remove(work.id)}
+              >
+                Remove
+              </button>
+            )}
           </div>
         </div>
 
